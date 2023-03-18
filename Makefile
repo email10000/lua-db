@@ -44,9 +44,7 @@ install: src/ldb_core.so
 	mkdir -p $(LUA_LIBDIR)/
 	install -b -m 644 -t $(LUA_LIBDIR)/ src/ldb_core.so
 	test -f src/ldb_gfx.so && install -b -m 644 -t $(LUA_LIBDIR)/ src/ldb_gfx.so || true
-	test -f src/ldb_sdl.so && install -b -m 644 -t $(LUA_LIBDIR)/ src/ldb_sdl.so || true
 	test -f src/ldb_fb.so && install -b -m 644 -t $(LUA_LIBDIR)/ src/ldb_fb.so || true
-	test -f src/ldb_drm.so && install -b -m 644 -t $(LUA_LIBDIR)/ src/ldb_drm.so || true
 	mkdir -p $(LUA_SHAREDIR)/
 	install -b -d $(LUA_SHAREDIR)/lua-db
 	install -b -d $(LUA_SHAREDIR)/lua-db/gui
@@ -59,6 +57,5 @@ uninstall:
 	@echo "-> Uninstalling from $(LUA_LIBDIR) and $(LUA_SHAREDIR)"
 	rm -f $(LUA_LIBDIR)/ldb_core.so
 	rm -f $(LUA_LIBDIR)/ldb_gfx.so
-	rm -f $(LUA_LIBDIR)/ldb_sdl.so
 	rm -f $(LUA_LIBDIR)/ldb_fb.so
 	rm -r -f $(LUA_SHAREDIR)/lua-db
