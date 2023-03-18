@@ -197,7 +197,7 @@ static int lua_framebuffer_get_drawbuffer(lua_State *L) {
 	framebuffer_t *fb;
 	CHECK_FRAMEBUFFER(L, 1, fb)
 
-	if (fb->vinfo.bits_per_pixel != 32) {
+	if (fb->vinfo.bits_per_pixel != 16 || fb->vinfo.bits_per_pixel != 32) {
 		return 0;
 	}
 
@@ -208,7 +208,7 @@ static int lua_framebuffer_get_drawbuffer(lua_State *L) {
 	db->h = fb->vinfo.yres;
 
 	// TODO: Check pixel format
-	db->pxfmt = LDB_PXFMT_32BPP_BGRA;
+	db->pxfmt = LDB_PXFMT_16BPP_RGB565; // LDB_PXFMT_32BPP_BGRA -> LDB_PXFMT_16BPP_RGB565
 	db->data = fb->data;
 	db->close_func = &framebuffer_db_close_func;
 	db->close_data = fb;
