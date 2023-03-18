@@ -197,10 +197,6 @@ static int lua_framebuffer_get_drawbuffer(lua_State *L) {
 	framebuffer_t *fb;
 	CHECK_FRAMEBUFFER(L, 1, fb)
 
-	if (fb->vinfo.bits_per_pixel != 16 || fb->vinfo.bits_per_pixel != 32) {
-		return 0;
-	}
-
 	// Create new drawbuffer userdata object
 	drawbuffer_t *db = (drawbuffer_t *)lua_newuserdata(L, sizeof(drawbuffer_t));
 
